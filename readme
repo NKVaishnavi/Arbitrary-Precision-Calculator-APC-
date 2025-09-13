@@ -1,0 +1,71 @@
+# Arbitrary Precision Calculator (APC)
+
+## Description
+The Arbitrary Precision Calculator (APC) is a C program that performs addition, subtraction, multiplication, and division on integers of **any size**.  
+It uses **doubly linked lists** to store each digit, allowing calculations beyond the limits of built-in C data types.
+
+---
+
+## Features
+- Handles very large integers without overflow.
+- Supports:
+  - Addition
+  - Subtraction (with negative results)
+  - Multiplication
+  - Division (quotient and remainder)
+- Implemented entirely in C without external libraries.
+- Efficient digit manipulation using doubly linked lists.
+
+---
+
+## How It Works
+1. **Input Handling**  
+   The program takes two numbers and an operator as **command-line arguments**.  
+   Example:
+   ```bash
+   ./apc 9876543210123456789 + 1234567890987654321
+   ```
+
+2. **Linked List Storage**  
+   Each digit is stored in a node of a doubly linked list, enabling:
+   - Easy traversal from either end
+   - Simple carry and borrow operations
+
+3. **Arithmetic Logic**  
+   - Addition and subtraction work digit-by-digit from the least significant digit.
+   - Multiplication uses grade-school multiplication logic adapted for linked lists.
+   - Division uses repeated subtraction and comparison to generate quotient and remainder.
+
+4. **Output**  
+   Prints the result for `+`, `-`, and `*`.  
+   Prints both quotient and remainder for `/`.
+
+---
+
+## Example Usage
+```bash
+$ ./apc 999999999999999999999999 + 1
+Result: 1000000000000000000000000
+
+$ ./apc 123456789123456789 * 987654321
+Result: 121932631234567900112635269
+
+$ ./apc 123456789 / 10000
+Quotient: 12345
+Remainder: 6789
+```
+
+---
+
+## Compilation
+To compile the program:
+```bash
+gcc -Wall -Wextra -std=c11 main.c inser_last.c insert_first.c addition.c subtraction.c multiplication.c division.c other_functions.c -o apc
+```
+
+---
+
+## Applications
+- Arbitrary-precision arithmetic
+- Educational tool for learning linked list data structures
+- Basis for cryptography or scientific computation requiring large number handling
